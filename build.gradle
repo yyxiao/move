@@ -1,0 +1,35 @@
+import org.gradle.plugins.ide.eclipse.model.Facet
+  
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'eclipse-wtp'  
+sourceCompatibility = 1.8   // 设置 JDK 版本
+webAppDirName = 'WebContent'    // 设置 WebApp 根目录
+sourceSets.main.java.srcDir 'src'   // 设置 Java 源码所在目录
+  
+// 设置 maven 库地址
+repositories { 
+    mavenLocal()
+    mavenCentral() // 中央库
+   // mavenRepo urls: "http://maven.oschina.net/content/groups/public/"
+   // maven{ url 'http://maven.oschina.net/content/groups/public/'}
+   // maven{ url 'http://maven.outofmemory.cn/'}
+}
+  
+// 设置依赖
+dependencies {
+    compile "com.jfinal:jfinal:2.2"
+    compile "mysql:mysql-connector-java:5.1.36"
+    compile "commons-logging:commons-logging:1.2"
+    compile "log4j:log4j:1.2.9"
+    compile "org.apache.httpcomponents:httpcore:4.4.1"
+    compile "org.apache.httpcomponents:httpclient:4.4.1"
+    compile "joda-time:joda-time:2.7"
+    compile "net.sf.json-lib:json-lib:2.4:jdk15"
+    //添加druid包
+    compile "com.alibaba:druid:1.0.13"
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    runtime 'javax.servlet:jstl:1.1.2'
+}
+  
