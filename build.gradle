@@ -1,22 +1,30 @@
 import org.gradle.plugins.ide.eclipse.model.Facet
-  
+
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'idea'
-apply plugin: 'eclipse-wtp'  
+apply plugin: 'eclipse-wtp'
 sourceCompatibility = 1.8   // 设置 JDK 版本
 webAppDirName = 'WebContent'    // 设置 WebApp 根目录
 sourceSets.main.java.srcDir 'src'   // 设置 Java 源码所在目录
-  
+
 // 设置 maven 库地址
-repositories { 
+repositories {
     mavenLocal()
     mavenCentral() // 中央库
-   // mavenRepo urls: "http://maven.oschina.net/content/groups/public/"
-   // maven{ url 'http://maven.oschina.net/content/groups/public/'}
-   // maven{ url 'http://maven.outofmemory.cn/'}
+    // mavenRepo urls: "http://maven.oschina.net/content/groups/public/"
+    // maven{ url 'http://maven.oschina.net/content/groups/public/'}
+    // maven{ url 'http://maven.outofmemory.cn/'}
+    // maven库
+//    def cn = "http://maven.aliyun.com/nexus/content/groups/public/"
+//    def abroad = "http://central.maven.org/maven2/"
+//    // 先从url中下载jar若没有找到，则在artifactUrls中寻找
+//    maven {
+//        url cn
+//        artifactUrls abroad
+//    }
 }
-  
+
 // 设置依赖
 dependencies {
     compile "com.jfinal:jfinal:2.2"
